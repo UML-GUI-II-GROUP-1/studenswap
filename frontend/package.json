@@ -1,0 +1,11 @@
+{
+    "name": "studentswap-frontend",
+    "version": "1.0.0",
+    "scripts": {
+      "start": "live-server public"
+    },
+    "dependencies": {
+      "live-server": "^1.2.1"
+    }
+  }
+  
