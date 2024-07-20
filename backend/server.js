@@ -14,8 +14,18 @@ mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopol
   .then(() => console.log('MongoDB connected'))
   .catch(err => console.log(err));
 
-// Routes
+// Root route
+app.get('/', (req, res) => {
+  res.send('Welcome to the StudentSwap API');
+});
+
+// API Routes
 app.use('/api', authRoutes);
+
+// Catch-all route for undefined paths
+app.use((req, res, next) => {
+  res.status(404).send('Sorry, the resource you are looking for does not exist.');
+});
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server started on port ${PORT}`));
