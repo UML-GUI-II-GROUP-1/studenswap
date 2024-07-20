@@ -21,7 +21,7 @@ app.get('/', (req, res) => {
 });
 
 // API Routes
-app.use('/api', authRoutes);
+app.use('/api/auth', authRoutes); // Mount with /auth prefix
 
 // Catch-all route for undefined paths
 app.use((req, res, next) => {

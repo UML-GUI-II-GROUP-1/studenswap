@@ -6,7 +6,7 @@ const User = require('../models/User');
 const auth = require('../middleware/auth');
 const router = express.Router();
 
-// @route   POST api/signup
+// @route   POST api/auth/signup
 // @desc    Register user
 // @access  Public
 router.post(
@@ -66,7 +66,7 @@ router.post(
   }
 );
 
-// @route   POST api/login
+// @route   POST api/auth/login
 // @desc    Authenticate user & get token
 // @access  Public
 router.post(
@@ -118,7 +118,7 @@ router.post(
   }
 );
 
-// @route   GET api/user
+// @route   GET api/auth/user
 // @desc    Get user by token
 // @access  Private
 router.get('/user', auth, async (req, res) => {
