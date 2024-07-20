@@ -20,6 +20,26 @@ app.get('/', (req, res) => {
   res.send('Welcome to the StudentSwap API');
 });
 
+// Status route
+app.get('/api/status', (req, res) => {
+  res.send('API is working');
+});
+
+// Health route
+app.get('/api/health', (req, res) => {
+  res.send('API is healthy');
+});
+
+// Users route
+app.get('/api/users', (req, res) => {
+  // Dummy user data for now
+  const users = [
+    { id: 1, name: 'John Doe' },
+    { id: 2, name: 'Jane Doe' }
+  ];
+  res.json(users);
+});
+
 // API Routes
 app.use('/api/auth', authRoutes); // Mount with /auth prefix
 
