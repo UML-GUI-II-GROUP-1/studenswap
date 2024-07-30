@@ -8,7 +8,7 @@
 </head>
 <body>
     <header>
-        <nav>
+        <nav class="navbar">
             <ul>
                 <!-- Navigation menu items linking to different pages of the website -->
                 <li><a href="Homepage.html">Home</a></li>
@@ -17,8 +17,8 @@
                 <li><a href="contact.html">Contact Us</a></li>
                 <li><a href="signup.html">Sign Up</a></li>
                 <li><a href="login.html">Login</a></li>
-                </ul>
-            </nav>
+            </ul>
+        </nav>
     </header>
 
     <div class="container">
@@ -30,74 +30,74 @@
                     <input type="text" id="search" placeholder="Search...">
                 </div>
                 <div class="newlisting">
-                    <button class="newlisting" data-category="all">Create New Listing</button>
-            </div>
-            <div class="scrollable-content">
-                <div class="form-group">
-                    <div class="minmax">
-                        <label for="min-price">Min Price</label>
-                        <input type="number" id="min-price" placeholder="Min">
+                    <a href="add-item.html" class="newlisting" data-category="all">Create New Listing</a>
                 </div>
-                </div>
-                <div class="form-group">
-                    <div class="minmax">
-                        <label for="max-price">Max Price</label>
-                        <input type="number" id="max-price" placeholder="Max">
-                </div>
-                </div>
-
-                <div id="list1" class="dropdown-check-list" tabindex="100">
-                    <span class="anchor">Condition</span>
-                    <ul class="items">
-                      <li><input type="checkbox" />New </li>
-                      <li><input type="checkbox" />Used - Like New</li>
-                      <li><input type="checkbox" />Used - Good </li>
-                      <li><input type="checkbox" />Used - Fair </li>
-                    </ul>
-                  </div>
-
-                <div class="form-group">
-                    <label>Categories</label>
-                    <div class="categories-buttons">
-                        <button class="btn category-btn" data-category="all">All</button>
-                        <button class="btn category-btn" data-category="vehicles">Vehicles</button>
-                        <button class="btn category-btn" data-category="property">Property Rentals</button>
-                        <button class="btn category-btn" data-category="apparel">Apparel</button>
-                        <button class="btn category-btn" data-category="classifieds">Classifieds</button>
-                        <button class="btn category-btn" data-category="electronics">Electronics</button>
-                        <button class="btn category-btn" data-category="entertainment">Entertainment</button>
-                        
+                <div class="scrollable-content">
+                    <div class="form-group">
+                        <div class="minmax">
+                            <label for="min-price">Min Price</label>
+                            <input type="number" id="min-price" placeholder="Min">
+                        </div>
                     </div>
+                    <div class="form-group">
+                        <div class="minmax">
+                            <label for="max-price">Max Price</label>
+                            <input type="number" id="max-price" placeholder="Max">
+                        </div>
+                    </div>
+
+                    <div id="list1" class="dropdown-check-list" tabindex="100">
+                        <span class="anchor">Condition</span>
+                        <ul class="items">
+                            <li><input type="checkbox" value="new">New</li>
+                            <li><input type="checkbox" value="used-like new">Used - Like New</li>
+                            <li><input type="checkbox" value="used-good">Used - Good</li>
+                            <li><input type="checkbox" value="used-fair">Used - Fair</li>
+                        </ul>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Categories</label>
+                        <div class="categories-buttons">
+                            <button class="btn category-btn" data-category="all">All</button>
+                            <button class="btn category-btn" data-category="vehicles">Vehicles</button>
+                            <button class="btn category-btn" data-category="property">Property Rentals</button>
+                            <button class="btn category-btn" data-category="apparel">Apparel</button>
+                            <button class="btn category-btn" data-category="classifieds">Classifieds</button>
+                            <button class="btn category-btn" data-category="electronics">Electronics</button>
+                            <button class="btn category-btn" data-category="entertainment">Entertainment</button>
+                        </div>
+                    </div>
+                    <button class="applyfilters" onclick="applyFilters()">Apply Filters</button>
                 </div>
-                <button class="applyfilters">Apply Filters</button>
             </div>
         </aside>
 
         <main class="main-content">
             <h1>Item Listings</h1>
-            <div class="listings">
-                <a href="listing.html" class="listing-item" data-name="Desk" id="listing-desk">
+            <div class="listings" id="item-list">
+                <a href="listing.html" class="listing-item" data-name="Desk" data-condition="new" data-price="20">
                     <div class="listing-image" style="background-image: url('img/desk.jpg');"></div>
                     <div class="listing-info">
                         <h2>Desk</h2>
                         <p>$20</p>
                     </div>
                 </a>
-                <a href="listing2.html" class="listing-item" data-name="Sofa" id="listing-sofa">
+                <a href="listing2.html" class="listing-item" data-name="Sofa" data-condition="used-good" data-price="200">
                     <div class="listing-image" style="background-image: url('img/sofa.jpg');"></div>
                     <div class="listing-info">
                         <h2>Sofa</h2>
                         <p>$200</p>
                     </div>
                 </a>
-                <a href="listing3.html" class="listing-item" data-name="Monitor" id="listing-monitor">
+                <a href="listing3.html" class="listing-item" data-name="Monitor" data-condition="used-like new" data-price="50">
                     <div class="listing-image" style="background-image: url('img/monitor.jpg');"></div>
                     <div class="listing-info">
                         <h2>Monitor</h2>
                         <p>$50</p>
                     </div>
                 </a>
-                <a href="listing4.html" class="listing-item" data-name="TV" id="listing-tv">
+                <a href="listing4.html" class="listing-item" data-name="TV" data-condition="used-fair" data-price="200">
                     <div class="listing-image" style="background-image: url('img/tv.jpg');"></div>
                     <div class="listing-info">
                         <h2>TV</h2>
@@ -105,29 +105,97 @@
                     </div>
                 </a>
             </div>
-            
         </main>
     </div>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const searchInput = document.getElementById('search');
-            const listings = document.querySelectorAll('.listing-item');
+            const listingsContainer = document.getElementById('item-list');
+            const minPriceInput = document.getElementById('min-price');
+            const maxPriceInput = document.getElementById('max-price');
+            const conditionCheckboxes = document.querySelectorAll('input[type="checkbox"]');
+            const applyFiltersButton = document.querySelector('.applyfilters');
+
+            let items = JSON.parse(localStorage.getItem('inventory')) || [];
             
-            searchInput.addEventListener('input', function() {
-                const searchTerm = searchInput.value.toLowerCase();
-    
-                listings.forEach(function(listing) {
-                    const listingName = listing.getAttribute('data-name').toLowerCase();
-    
-                    if (listingName.includes(searchTerm)) {
-                        listing.style.display = 'block';
-                    } else {
-                        listing.style.display = 'none';
-                    }
-                });
+            const defaultItems = [
+                {
+                    itemName: 'Desk',
+                    condition: 'new',
+                    price: 20,
+                    imageURL: 'img/desk.jpg'
+                },
+                {
+                    itemName: 'Sofa',
+                    condition: 'used-good',
+                    price: 200,
+                    imageURL: 'img/sofa.jpg'
+                },
+                {
+                    itemName: 'Monitor',
+                    condition: 'used-like new',
+                    price: 50,
+                    imageURL: 'img/monitor.jpg'
+                },
+                {
+                    itemName: 'TV',
+                    condition: 'used-fair',
+                    price: 100,
+                    imageURL: 'img/tv.jpg'
+                }
+            ];
+
+            items = [...defaultItems, ...items];
+
+            displayItems(items);
+
+            applyFiltersButton.addEventListener('click', function() {
+                applyFilters();
             });
+
+            function applyFilters() {
+                const searchTerm = searchInput.value.toLowerCase();
+                const minPrice = minPriceInput.value ? parseFloat(minPriceInput.value) : 0;
+                const maxPrice = maxPriceInput.value ? parseFloat(maxPriceInput.value) : Infinity;
+
+                const selectedConditions = Array.from(conditionCheckboxes)
+                    .filter(checkbox => checkbox.checked)
+                    .map(checkbox => checkbox.value);
+
+                const filteredItems = items.filter(item => {
+                    const matchesSearch = item.itemName.toLowerCase().includes(searchTerm);
+                    const matchesPrice = item.price >= minPrice && item.price <= maxPrice;
+                    const matchesCondition = selectedConditions.length === 0 || selectedConditions.includes(item.condition);
+
+                    return matchesSearch && matchesPrice && matchesCondition;
+                });
+
+                displayItems(filteredItems);
+            }
+
+            function displayItems(items) {
+                listingsContainer.innerHTML = '';
+
+                items.forEach(item => {
+                    const itemElement = document.createElement('a');
+                    itemElement.href = 'listing.html';
+                    itemElement.classList.add('listing-item');
+                    itemElement.dataset.name = item.itemName;
+                    itemElement.dataset.condition = item.condition;
+                    itemElement.dataset.price = item.price;
+
+                    itemElement.innerHTML = `
+                        <div class="listing-image" style="background-image: url('${item.imageURL}');"></div>
+                        <div class="listing-info">
+                            <h2>${item.itemName}</h2>
+                            <p>$${item.price}</p>
+                        </div>
+                    `;
+
+                    listingsContainer.appendChild(itemElement);
+                });
+            }
         });
     </script>
-    
 </body>
 </html>

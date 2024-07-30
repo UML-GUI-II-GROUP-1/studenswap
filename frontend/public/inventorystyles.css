@@ -45,7 +45,6 @@ img[alt="sellerimage"] {
     vertical-align: middle;
 }
 
-
 .container {
     display: flex;
 }
@@ -59,7 +58,7 @@ img[alt="sellerimage"] {
     flex-direction: column;
     height: 100vh;
     padding-right: 10px;
-    padding-bottom: 10px
+    padding-bottom: 10px;
 }
 
 .search-bar {
@@ -176,4 +175,3 @@ input[type="text"], input[type="number"], select {
 .applyfilters {
     background-color: rgb(128, 206, 243);
 }
-
