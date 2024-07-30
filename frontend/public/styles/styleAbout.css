@@ -1,0 +1,112 @@
+/* Base styling for the body element */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* Styling for the header element */
+header 
+{
+    width: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    padding: 15px 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 2;
+}
+
+header nav ul 
+{
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+}
+
+header nav ul li 
+{
+    margin: 0 15px;
+}
+
+header nav ul li a 
+{
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+header nav ul li a:hover 
+{
+    text-decoration: underline;
+    background-color: #D32F2F;
+}
+
+/* Styling for the main content area */
+main {
+    flex: 1; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+    background-color: #f9f9f9;
+    color: #000;
+    position: relative;
+    margin-top: 60px;
+    margin-bottom: 60px; 
+}
+
+/* Styling for the heading elements in the main content */
+main h2 {
+    color: #0067B1;
+    margin-top: 20px;
+}
+
+/* Styling for the paragraph elements in the main content */
+main p {
+    color: #000; 
+    margin: 20px 0;
+}
+
+/* Styling for the footer */
+footer 
+{
+    width: 100%;
+    text-align: center;
+    color: #ccc;
+    background: rgba(0, 0, 0, 0.8);
+    padding: 10px 0;
+    position: relative;
+    bottom: 0;
+}
+
+.social-links 
+{
+    margin-top: 10px;
+}
+
+.social-links a 
+{
+    margin: 0 10px;
+    display: inline-block;
+    transition: transform 0.3s ease;
+}
+
+.social-links img
+ {
+    width: 30px;
+    height: 30px;
+}
+
+.social-links a:hover 
+{
+    transform: scale(1.1);
+}

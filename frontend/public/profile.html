@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>StudentSwap - Profile Page</title> 
+    <link rel="stylesheet" href="profile.css"> <!-- Links to the associated css page-->
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <!-- Navigation menu items linking to different pages of the website -->
+                <li><a href="index.html">Home</a></li>
+                <li><a href="inventory.html">Inventory</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+                <li><a href="signup.html">Sign Up</a></li>
+                <li><a href="login.html">Login</a></li>
+            </ul>
+        </nav>
+    </header>
+    <!-- Link to add a new listing -->
+    <a href="https://www.umlswapme.com/add-item.html" class="add-listing-button">Add Listing</a>
+    <div class="profile-container">
+        <div class="profile-picture" id="profile-picture"></div> <!-- Container for the profile picture -->
+        <a href="edit-profile.html" class="edit-profile-button">Edit Profile</a> <!-- Link to edit profile page -->
+        <div class="profile-info">
+            <h1 id="profile-name">John Doe</h1> <!-- Placeholder for profile name -->
+            <p id="profile-major">Major: </p> <!-- Placeholder for major -->
+            <p id="profile-year">Year: Junior</p> <!-- Placeholder for year -->
+            <p id="profile-campus">Campus: North Campus</p> <!-- Placeholder for campus -->
+            <p>Town: Lowell</p> <!-- Static information for the town -->
+            <div class="stars">
+                <!-- Rating stars -->
+                <span>&#9733;</span>
+                <span>&#9733;</span>
+                <span>&#9733;</span>
+                <span>&#9733;</span>
+                <span>&#9734;</span>
+            </div>
+        </div>
+        <div class="listings">
+            <!-- Listings for items -->
+            <a href="listing1.html" class="listing-item">
+                <div class="listing-image" style="background-image: url('Desk.jpg');"></div> <!-- Background image for listing item -->
+                <div class="listing-info">
+                    <h2>Desk</h2> <!-- item name -->
+                    <p>$20</p> <!-- item price -->
+                </div>
+            </a>
+            <a href="listing2.html" class="listing-item">
+                <div class="listing-image" style="background-image: url('item2.jpg');"></div> 
+                <div class="listing-info">
+                    <h2>Item 2</h2> 
+                    <p>$30</p> 
+                </div>
+            </a>
+        </div>
+    </div>
+    <footer>
+        <p>&copy; 2024 StudentSwap. All rights reserved.</p> <!-- Footer with copyright information -->
+        <div class="social-links">
+            <!-- Links to social media pages with icons -->
+            <a href="https://www.facebook.com" target="_blank"><img src="facebook.png" alt="Facebook"></a>
+            <a href="https://www.twitter.com" target="_blank"><img src="twitter.png" alt="Twitter"></a>
+            <a href="https://www.instagram.com" target="_blank"><img src="instagram.png" alt="Instagram"></a>
+            <a href="https://www.tiktok.com" target="_blank"><img src="tiktok.png" alt="TikTok"></a>
+            <a href="https://www.youtube.com" target="_blank"><img src="youtube.png" alt="YouTube"></a>
+            <a href="https://www.reddit.com" target="_blank"><img src="reddit.png" alt="Reddit"></a>
+        </div>
+    </footer>
+
+    <script>
+        //JS Scripts
+        document.addEventListener('DOMContentLoaded', function() {
+            const profilePicture = localStorage.getItem('profilePicture');  // Retrieves stored values from localStorage
+            const major = localStorage.getItem('major');
+            const year = localStorage.getItem('year');
+            const campus = localStorage.getItem('campus');
+
+            // If a profile picture is stored, set it as the background image of the profile picture container
+            if (profilePicture) 
+            {
+                document.getElementById('profile-picture').style.backgroundImage = `url('${profilePicture}')`;
+            }
+            // If a major is stored, set it in the profile major element
+            if (major) 
+            {
+                document.getElementById('profile-major').textContent = `Major: ${major}`;
+            }
+            // If a year is stored, set it in the profile year element
+            if (year) 
+            {
+                document.getElementById('profile-year').textContent = `Year: ${year}`;
+            }
+            // If a campus is stored, set it in the profile campus element
+            if (campus) 
+            {
+                document.getElementById('profile-campus').textContent = `Campus: ${campus}`;
+            }
+        });
+    </script>
+</body>
+</html>
