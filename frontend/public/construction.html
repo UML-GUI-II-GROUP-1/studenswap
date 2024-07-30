@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StudentSwap - Under Construction</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Roboto', sans-serif;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-image: url('background.webp');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        header {
+            width: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            padding: 15px 0;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 2;
+        }
+
+        header nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        header nav ul li {
+            margin: 0 15px;
+        }
+
+        header nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        header nav ul li a:hover {
+            color: #ff00ff;
+        }
+
+        .container {
+            background: rgba(0, 0, 0, 0.7);
+            padding: 50px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            max-width: 600px;
+            margin: auto;
+            z-index: 1;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+
+        p {
+            font-size: 1.2em;
+            margin-bottom: 20px;
+        }
+
+        .rotating-text {
+            position: absolute;
+            font-size: 4em;
+            font-weight: bold;
+            color: #fff;
+            text-shadow: 0 1px 0 #ccc, 0 2px 0 #c9c9c9, 0 3px 0 #bbb,
+                        0 4px 0 #b9b9b9, 0 5px 0 #aaa, 0 6px 1px rgba(0, 0, 0, 0.1),
+                        0 0 5px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.3),
+                        0 3px 5px rgba(0, 0, 0, 0.2), 0 5px 10px rgba(0, 0, 0, 0.25),
+                        0 10px 10px rgba(0, 0, 0, 0.2), 0 20px 20px rgba(0, 0, 0, 0.15);
+            animation: rotate 5s linear infinite, move 10s ease-in-out infinite, changeColor 5s linear infinite;
+        }
+
+        @keyframes rotate {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        @keyframes move {
+            0% {
+                top: 10%;
+                left: 10%;
+            }
+            25% {
+                top: 10%;
+                left: 80%;
+            }
+            50% {
+                top: 80%;
+                left: 80%;
+            }
+            75% {
+                top: 80%;
+                left: 10%;
+            }
+            100% {
+                top: 10%;
+                left: 10%;
+            }
+        }
+
+        @keyframes changeColor {
+            0% {
+                color: #ff0000;
+            }
+            25% {
+                color: #00ff00;
+            }
+            50% {
+                color: #0000ff;
+            }
+            75% {
+                color: #ffff00;
+            }
+            100% {
+                color: #ff00ff;
+            }
+        }
+
+        footer {
+            position: absolute;
+            bottom: 10px;
+            width: 100%;
+            text-align: center;
+            color: #ccc;
+        }
+
+        .social-links {
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            margin: 0 10px;
+            display: inline-block;
+            transition: transform 0.3s ease;
+        }
+
+        .social-links img {
+            width: 40px;
+            height: 40px;
+        }
+
+        .social-links a:hover {
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="home.html">Home</a></li>
+                <li><a href="inventory.html">Inventory</a></li>
+                <li><a href="add-item.html">Add Item</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+                <li><a href="signup.html">Sign Up</a></li>
+                <li><a href="login.html">Login</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="rotating-text">Under Construction</div>
+    <div class="container">
+        <h1>We're Building Something Great!</h1>
+        <p>Our website is currently under construction. Stay tuned for something amazing!</p>
+    </div>
+    <footer>
+        <div class="social-links">
+            <a href="https://www.facebook.com" target="_blank"><img src="facebook.png" alt="Facebook"></a>
+            <a href="https://www.twitter.com" target="_blank"><img src="twitter.png" alt="Twitter"></a>
+            <a href="https://www.instagram.com" target="_blank"><img src="instagram.png" alt="Instagram"></a>
+            <a href="https://www.tiktok.com" target="_blank"><img src="tiktok.png" alt="TikTok"></a>
+            <a href="https://www.youtube.com" target="_blank"><img src="youtube.png" alt="YouTube"></a>
+            <a href="https://www.reddit.com" target="_blank"><img src="reddit.png" alt="Reddit"></a>
+        </div>
+        <p>&copy; 2024 StudentSwap. All rights reserved.</p>
+    </footer>
+</body>
+</html>
