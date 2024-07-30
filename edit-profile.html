@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Profile</title> <!-- Sets the title of the webpage -->
+    <link rel="stylesheet" href="edit-profile.css"> <!-- Links to the associated css page-->
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <!-- Navigation menu items linking to different pages of the website -->
+                <li><a href="index.html">Home</a></li>
+                <li><a href="inventory.html">Inventory</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+                <li><a href="signup.html">Sign Up</a></li>
+                <li><a href="login.html">Login</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="edit-profile-container">
+        <h1>Edit Profile</h1> <!-- Heading for the Edit Profile page -->
+        <form id="edit-profile-form">
+            <!-- Form for editing profile information -->
+            <label for="profile-picture">Change Profile Picture:</label> <!-- Label for the profile picture input -->
+            <input type="file" id="profile-picture" name="profile-picture"> <!-- Input for uploading a new profile picture -->
+
+            <label for="major">Major:</label> <!-- Label for the major input field -->
+            <input type="text" id="major" name="major" > <!-- Input for entering the users major -->
+
+            <label for="year">Year:</label> <!-- Label for the year selection -->
+            <select id="year" name="year"> <!-- Dropdown menu for selecting the year -->
+                <option value="Freshman">Freshman</option>
+                <option value="Sophomore">Sophomore</option>
+                <option value="Junior" >Junior</option> 
+                <option value="Senior">Senior</option>
+                <option value="Graduate">Graduate</option>
+            </select>
+
+            <label for="campus">Campus:</label> <!-- Label for the campus selection -->
+            <select id="campus" name="campus"> <!-- Dropdown menu for selecting the campus -->
+                <option value="North Campus">East Campus</option>
+                <option value="South Campus">South Campus</option>
+                <option value="Off Campus">Off Campus</option>
+            </select>
+
+            <button type="button" onclick="saveProfile()">Save Profile</button> <!-- Button that will save profile changes, triggers the saveProfile() function -->
+        </form>
+    </div>
+    <footer>
+        <p>&copy; 2024 StudentSwap. All rights reserved.</p> 
+        <div class="social-links">
+            <!-- Links to social media pages with icons -->
+            <a href="https://www.facebook.com" target="_blank"><img src="facebook.png" alt="Facebook"></a>
+            <a href="https://www.twitter.com" target="_blank"><img src="twitter.png" alt="Twitter"></a>
+            <a href="https://www.instagram.com" target="_blank"><img src="instagram.png" alt="Instagram"></a>
+            <a href="https://www.tiktok.com" target="_blank"><img src="tiktok.png" alt="TikTok"></a>
+            <a href="https://www.youtube.com" target="_blank"><img src="youtube.png" alt="YouTube"></a>
+            <a href="https://www.reddit.com" target="_blank"><img src="reddit.png" alt="Reddit"></a>
+        </div>
+    </footer>
+    
+    <script>
+
+    //JS Scripts
+        // This function saves the profile changes
+        function saveProfile() 
+        {
+            
+            const profilePictureInput = document.getElementById('profile-picture'); // Get profile picture input element and file
+            const profilePictureFile = profilePictureInput.files[0];
+            const major = document.getElementById('major').value;  // Get values of major, year, and campus from the form
+            const year = document.getElementById('year').value;
+            const campus = document.getElementById('campus').value;
+
+            if (profilePictureFile) 
+            {
+                
+                const reader = new FileReader(); // If a new profile picture is uploaded, read it as a data URL
+                reader.onloadend = function() {
+                    //Function save's profile picture, major, year, and campus to the localStorage
+                    localStorage.setItem('profilePicture', reader.result);
+                    localStorage.setItem('major', major);
+                    localStorage.setItem('year', year);
+                    localStorage.setItem('campus', campus);
+                    window.location.href = 'profile.html';
+                }
+                reader.readAsDataURL(profilePictureFile);
+            } else 
+            {
+                // If no new profile picture, just save major, year, and campus to localStorage
+                localStorage.setItem('major', major);
+                localStorage.setItem('year', year);
+                localStorage.setItem('campus', campus);
+                window.location.href = 'profile.html'; // This will take user to profile after saving
+            }
+        }
+    </script>
+</body>
+</html>
