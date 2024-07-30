@@ -10,9 +10,13 @@ body {
     background-color: #343a40;
     padding: 0;
     margin: 0;
-    overflow: hidden;
     display: flex;
-    justify-content: space-between;
+    justify-content: center; /* Center the nav items */
+    align-items: center;     /* Center vertically */
+}
+
+.navbar li {
+    margin: 0 15px;          /* Add space between the nav items */
 }
 
 .navbar a {
@@ -25,10 +29,6 @@ body {
 
 .navbar a:hover {
     background-color: blue;
-}
-
-.navbar li {
-    flex: 1;
 }
 
 ul li img {
@@ -169,7 +169,7 @@ input[type="text"], input[type="number"], select {
 }
 
 .btn:hover {
-    background-color: #c82333;
+    background-color: #2a6fc9;
 }
 
 .applyfilters {
