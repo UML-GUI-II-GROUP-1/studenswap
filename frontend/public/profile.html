@@ -8,17 +8,23 @@
 </head>
 <body>
     <header>
-        <nav>
-            <ul>
-                <!-- Navigation menu items linking to different pages of the website -->
-                <li><a href="home.html">Home</a></li>
-                <li><a href="inventory.html">Inventory</a></li>
-                <li><a href="about.html">About Us</a></li>
-                <li><a href="contact.html">Contact Us</a></li>
-                <li><a href="signup.html">Sign Up</a></li>
-                <li><a href="login.html">Login</a></li>
-            </ul>
-        </nav>
+        <div class="header-content">
+            <div class="logo">StudentSwap</div>
+            <nav>
+                <ul class="nav-buttons">
+                    <!-- Navigation menu items linking to different pages of the website -->
+                    <li><a href="home.html">Home</a></li>
+                    <li><a href="inventory.html">Inventory</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                    <li><a href="signup.html">Sign Up</a></li>
+                    <li><a href="login.html">Login</a></li>
+                </ul>
+            </nav>
+            <div class="header-right">
+                <a href="profile.html" class="user-name">John Doe</a>
+            </div>
+        </div>
     </header>
     <!-- Link to add a new listing -->
     <a href="https://www.umlswapme.com/add-item.html" class="add-listing-button">Add Listing</a>
@@ -28,8 +34,8 @@
         <div class="profile-info">
             <h1 id="profile-name">John Doe</h1> <!-- Placeholder for profile name -->
             <p id="profile-major">Major: </p> <!-- Placeholder for major -->
-            <p id="profile-year">Year: Junior</p> <!-- Placeholder for year -->
-            <p id="profile-campus">Campus: North Campus</p> <!-- Placeholder for campus -->
+            <p id="profile-year">Year: </p> <!-- Placeholder for year -->
+            <p id="profile-campus">Campus: </p> <!-- Placeholder for campus -->
             <p>Town: Lowell</p> <!-- Static information for the town -->
             <div class="stars">
                 <!-- Rating stars -->
@@ -37,7 +43,7 @@
                 <span>&#9733;</span>
                 <span>&#9733;</span>
                 <span>&#9733;</span>
-                <span>&#9734;</span>
+                <span>&#9733;</span>
             </div>
         </div>
         <div class="listings">
@@ -46,6 +52,7 @@
                 <div class="listing-image" style="background-image: url('Desk.jpg');"></div> <!-- Background image for listing item -->
                 <div class="listing-info">
                     <h2>Desk</h2> <!-- item name -->
+                    <p>Quantity: 4</p>
                     <p>$20</p> <!-- item price -->
                 </div>
             </a>
