@@ -65,7 +65,38 @@ main {
 }
 
 h2 {
-    color: #0067B1;
+    font-size: 48px; /* Increased font size */
+    font-weight: bold;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); /* 3D effect */
+    transform-style: preserve-3d;
+    animation: rotate 5s infinite linear, colorChange 10s infinite linear;
+}
+
+@keyframes rotate {
+    from {
+        transform: rotateY(0deg) rotateX(0deg);
+    }
+    to {
+        transform: rotateY(360deg) rotateX(360deg);
+    }
+}
+
+@keyframes colorChange {
+    0% {
+        color: #ff6347; /* Tomato */
+    }
+    25% {
+        color: #1e90ff; /* DodgerBlue */
+    }
+    50% {
+        color: #32cd32; /* LimeGreen */
+    }
+    75% {
+        color: #ff4500; /* OrangeRed */
+    }
+    100% {
+        color: #ff6347; /* Tomato */
+    }
 }
 
 p {
