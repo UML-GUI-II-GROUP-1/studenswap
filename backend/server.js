@@ -26,3 +26,8 @@ app.get('/', (req, res) => {
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server started on port ${PORT}`));
+
+// Test Endpoint
+app.get('/api/sample-endpoint', (req, res) => {
+  res.json({ message: 'Sample endpoint working!' });
+});
