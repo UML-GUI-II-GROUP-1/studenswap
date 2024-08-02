@@ -5,6 +5,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const resetPasswordForm = document.getElementById('resetPasswordForm');
     const backToLoginLink = document.getElementById('backToLoginLink');
     const loginContainer = document.getElementById('loginContainer');
+    const umlEmailButton = document.getElementById('umlEmailButton');  // Get the UML button by its ID
 
     forgotPasswordLink.addEventListener('click', function(event) {
         event.preventDefault();
@@ -21,7 +22,6 @@ document.addEventListener('DOMContentLoaded', function() {
     resetPasswordForm.addEventListener('submit', function(event) {
         event.preventDefault();
         const email = document.getElementById('resetEmail').value;
-
         if (validateEmail(email)) {
             fetch('/forgot-password', {
                 method: 'POST',
@@ -47,7 +47,6 @@ document.addEventListener('DOMContentLoaded', function() {
         event.preventDefault();
         const email = document.getElementById('email').value;
         const password = document.getElementById('password').value;
-
         if (validateEmail(email) && validatePassword(password)) {
             fetch('/api/users/login', {
                 method: 'POST',
@@ -71,6 +70,10 @@ document.addEventListener('DOMContentLoaded', function() {
         } else {
             alert('Please enter a valid email (ending with student.uml.edu) and a password that meets the required criteria.');
         }
+    });
+
+    umlEmailButton.addEventListener('click', function() {
+        window.location.href = "https://www.uml.edu/myuml/";
     });
 
     function validateEmail(email) {
