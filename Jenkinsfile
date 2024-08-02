@@ -6,7 +6,8 @@ pipeline {
         BRANCH = 'main'
         FRONTEND_DIR = 'frontend'
         BACKEND_DIR = 'backend'
-        DEPLOY_DIR = '/var/www/html'
+        FRONTEND_DEPLOY_DIR = '/var/www/html'
+        BACKEND_SERVICE_NAME = 'studentswap-backend'
     }
 
     stages {
@@ -36,9 +37,9 @@ pipeline {
         stage('Deploy Frontend') {
             steps {
                 sh """
-                    sudo rm -rf ${env.DEPLOY_DIR}/*
-                    sudo cp -r ${env.FRONTEND_DIR}/build/* ${env.DEPLOY_DIR}/
-                    sudo systemctl restart httpd
+                    sudo rm -rf ${env.FRONTEND_DEPLOY_DIR}/*
+                    sudo cp -r ${env.FRONTEND_DIR}/build/* ${env.FRONTEND_DEPLOY_DIR}/
+                    sudo systemctl restart nginx
                 """
             }
         }
@@ -48,8 +49,8 @@ pipeline {
                 script {
                     def backendDir = "${env.WORKSPACE}/${env.BACKEND_DIR}"
                     sh """
-                        pm2 delete all || true
-                        pm2 start ${backendDir}/src/app.js --name studentswap-backend
+                        pm2 delete ${env.BACKEND_SERVICE_NAME} || true
+                        pm2 start ${backendDir}/server.js --name ${env.BACKEND_SERVICE_NAME}
                         pm2 save
                     """
                 }
