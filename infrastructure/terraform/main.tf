@@ -28,7 +28,7 @@ resource "aws_instance" "studentswap" {
 
 resource "aws_security_group" "allow_http_ssh" {
   name        = "allow_http_ssh"
-  description = "Allow HTTP, HTTPS, and SSH inbound traffic"
+  description = "Allow HTTP, HTTPS, SSH, and custom port inbound traffic"
 
   ingress {
     from_port   = 22
@@ -52,11 +52,11 @@ resource "aws_security_group" "allow_http_ssh" {
   }
 
   ingress {
-  from_port   = 8080
-  to_port     = 8080
-  protocol    = "tcp"
-  cidr_blocks = ["0.0.0.0/0"]
-}
+    from_port   = 5000
+    to_port     = 5000
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
 
   egress {
     from_port   = 0
