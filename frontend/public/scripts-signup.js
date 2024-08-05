@@ -25,17 +25,17 @@ document.addEventListener('DOMContentLoaded', function() {
             return;
         }
 
-        fetch('/api/users/register', {
+        fetch('/api/auth/signup', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({ firstName, lastName, email, password })
+            body: JSON.stringify({ name: `${firstName} ${lastName}`, email, password })
         })
         .then(response => response.json())
         .then(data => {
-            alert(data.message);
-            if (data.message === 'User registered successfully. Please check your email to verify your account.') {
+            alert(data.msg);
+            if (data.msg === 'Registration successful. Please verify your email.') {
                 window.location.href = 'login.html';
             }
         })
