@@ -25,25 +25,18 @@ document.addEventListener('DOMContentLoaded', function() {
             return;
         }
 
-        const name = `${firstName} ${lastName}`; // Combine first and last name
-
         fetch('/api/auth/signup', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({ name, email, password })
+            body: JSON.stringify({ name: firstName + ' ' + lastName, email, password })
         })
         .then(response => response.json())
         .then(data => {
-            console.log('Response data:', data);  // Log the response data
-            if (data.msg) {
-                alert(data.msg);
-                if (data.msg === 'User registered successfully. Please check your email to verify your account.') {
-                    window.location.href = 'login.html';
-                }
-            } else {
-                alert('An unexpected error occurred. Please try again later.');
+            alert(data.msg);
+            if (data.msg === 'Registration successful. Please verify your email.') {
+                window.location.href = 'login.html';
             }
         })
         .catch(error => {
