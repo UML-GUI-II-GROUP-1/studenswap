@@ -6,7 +6,7 @@ const jwt = require('jsonwebtoken');
 
 // Signup route
 router.post('/signup', async (req, res) => {
-    const { email, password } = req.body;
+    const { name, email, password } = req.body;
 
     try {
         let user = await User.findOne({ email });
@@ -15,6 +15,7 @@ router.post('/signup', async (req, res) => {
         }
 
         user = new User({
+            name,
             email,
             password
         });
