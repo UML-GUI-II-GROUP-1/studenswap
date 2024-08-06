@@ -6,8 +6,7 @@ body {
 }
 
 /* Styling for the header element */
-header 
-{
+header {
     width: 100%;
     background: rgba(0, 0, 0, 0.8);
     padding: 15px 0;
@@ -17,8 +16,7 @@ header
     z-index: 2;
 }
 
-header nav ul 
-{
+header nav ul {
     list-style: none;
     padding: 0;
     margin: 0;
@@ -26,23 +24,45 @@ header nav ul
     justify-content: center;
 }
 
-header nav ul li 
-{
+header nav ul li {
     margin: 0 15px;
 }
 
-header nav ul li a 
-{
+header nav ul li a {
     color: white;
     text-decoration: none;
     font-weight: bold;
     transition: color 0.3s ease;
 }
 
-header nav ul li a:hover 
-{
+header nav ul li a:hover {
     text-decoration: underline;
     background-color: #D32F2F;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 3;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+}
+
+.dropdown-content a:hover {
+    background-color: #ddd;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
 }
 
 ul li img {
@@ -121,4 +141,34 @@ img[alt="sellerimage"] {
 .listing {
     position: relative;
     z-index: 1;
+}
+
+/* Styling for the footer element */
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 20px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    z-index: 2;
+}
+
+footer .social-links {
+    margin-bottom: 10px;
+}
+
+footer .social-links a {
+    margin: 0 10px;
+    display: inline-block;
+}
+
+footer .social-links img {
+    width: 24px;
+    height: 24px;
+}
+
+footer p {
+    margin: 0;
 }
