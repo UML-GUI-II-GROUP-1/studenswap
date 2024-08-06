@@ -16,7 +16,7 @@ module.exports = {
     {
       name: 'studentswap-frontend',
       script: 'node_modules/.bin/live-server',
-      args: 'public',
+      args: '--port=8080 public', // Use --port to specify port and public for directory
       env: {
         PATH: '/usr/bin:/usr/local/bin:/bin'
       }
