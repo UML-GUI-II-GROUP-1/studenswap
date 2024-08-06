@@ -41,6 +41,25 @@ header nav ul li a:hover {
     background-color: blue;
 }
 
+.profile {
+    margin-left: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.profile-img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+.profile-name {
+    margin-top: 5px;
+    font-size: 14px;
+    color: white;
+}
+
 main {
     perspective: 1500px;
     flex: 1; 

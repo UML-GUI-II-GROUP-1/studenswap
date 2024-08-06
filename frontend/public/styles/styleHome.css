@@ -123,6 +123,26 @@ p {
     border: 5px solid #0067B1;
 }
 
+.profile {
+    margin-left: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.profile-img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+.profile-name {
+    margin-top: 5px;
+    font-size: 14px;
+    color: white;
+}
+
+
 footer {
     width: 100%;
     text-align: center;
