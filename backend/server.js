@@ -22,7 +22,7 @@ app.use('/api/auth', require('./routes/authRoutes'));
 app.use('/api/inventory', require('./routes/inventoryRoutes'));
 
 // Sample endpoint for testing
-app.get('/api/sample-endpoint', (_req, res) => {
+app.get('/api/sample-endpoint', (req, res) => {
   res.json({ message: 'Sample endpoint working!' });
 });
 
