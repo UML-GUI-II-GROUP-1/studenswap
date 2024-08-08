@@ -9,22 +9,12 @@ document.addEventListener("DOMContentLoaded", () => {
             const password = loginForm.password.value;
 
             try {
-                const response = await fetch('/api/login', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({ email, password })
-                });
-                const data = await response.json();
-                if (response.status === 200) {
-                    alert('Login successful!');
-                    localStorage.setItem('token', data.token);
-                } else {
-                    alert(data.msg);
-                }
+                await firebase.auth().signInWithEmailAndPassword(email, password);
+                alert('Login successful!');
+                window.location.href = 'index.html';
             } catch (error) {
                 console.error('Error:', error);
+                alert('Error logging in: ' + error.message);
             }
         });
     }
@@ -44,22 +34,15 @@ document.addEventListener("DOMContentLoaded", () => {
             }
 
             try {
-                const response = await fetch('/api/signup', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({ firstname, lastname, email, password })
-                });
-                const data = await response.json();
-                if (response.status === 201) {
-                    alert('Signup successful! You can now log in.');
-                    window.location.href = 'index.html';
-                } else {
-                    alert(data.msg);
-                }
+                const userCredential = await firebase.auth().createUserWithEmailAndPassword(email, password);
+                const user = userCredential.user;
+                await user.updateProfile({ displayName: `${firstname} ${lastname}` });
+                await user.sendEmailVerification();
+                alert('Signup successful! Please verify your email.');
+                window.location.href = 'login.html';
             } catch (error) {
                 console.error('Error:', error);
+                alert('Error signing up: ' + error.message);
             }
         });
     }

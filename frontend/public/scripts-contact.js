@@ -1,3 +1,6 @@
+import { db } from '../src/firebase-init.js';
+import { collection, addDoc } from 'firebase/firestore';
+
 document.addEventListener('DOMContentLoaded', function() {
     const contactForm = document.getElementById('contactForm');
 
@@ -14,19 +17,15 @@ document.addEventListener('DOMContentLoaded', function() {
             return;
         }
 
-        fetch('/contact-us', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ name, email, subject, message })
+        addDoc(collection(db, 'contacts'), {
+            name: name,
+            email: email,
+            subject: subject,
+            message: message
         })
-        .then(response => response.json())
-        .then(data => {
-            alert(data.message);
-            if (data.message === 'Message sent successfully') {
-                contactForm.reset();
-            }
+        .then(() => {
+            alert('Message sent successfully');
+            contactForm.reset();
         })
         .catch(error => {
             console.error('Error:', error);

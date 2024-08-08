@@ -11,12 +11,12 @@ body {
     padding: 0;
     margin: 0;
     display: flex;
-    justify-content: center; /* Center the nav items */
-    align-items: center;     /* Center vertically */
+    justify-content: center;
+    align-items: center;
 }
 
 .navbar li {
-    margin: 0 15px;          /* Add space between the nav items */
+    margin: 0 15px;
 }
 
 .navbar a {
@@ -30,6 +30,7 @@ body {
 .navbar a:hover {
     background-color: blue;
 }
+
 .dropdown-content {
     display: none;
     position: absolute;
@@ -47,18 +48,20 @@ body {
     text-align: left;
 }
 
-.dropdown-content a:hover {background-color: #ddd;}
+.dropdown-content a:hover {
+    background-color: #ddd;
+}
 
 .dropdown:hover .dropdown-content {
     display: block;
 }
+
 ul li img {
     max-height: 1em;
     max-width: 100%;
     width: auto;
     vertical-align: middle;
 }
-
 
 img[alt="sellerimage"] {
     max-height: 1em;
@@ -70,8 +73,6 @@ img[alt="sellerimage"] {
 .container {
     display: flex;
 }
-
-
 
 .sidebar {
     width: 250px;

@@ -3,14 +3,15 @@
 <head>
     <meta charset="UTF-8"> 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Edit Profile</title> <!-- Sets the title of the webpage -->
-    <link rel="stylesheet" href="edit-profile.css"> <!-- Links to the associated css page-->
+    <title>Edit Profile</title>
+    <link rel="stylesheet" href="edit-profile.css">
+    <script type="module" src="firebase-init.js"></script>
+    <script type="module" src="edit-profile.js"></script>
 </head>
 <body>
     <header>
         <nav>
             <ul>
-                <!-- Navigation menu items linking to different pages of the website -->
                 <li><a href="index.html">Home</a></li>
                 <li><a href="inventory.html">Inventory</a></li>
                 <li><a href="about.html">About Us</a></li>
@@ -32,32 +33,31 @@
         </nav>
     </header>
     <div class="edit-profile-container">
-        <h1>Edit Profile</h1> <!-- Heading for the Edit Profile page -->
+        <h1>Edit Profile</h1>
         <form id="edit-profile-form">
-            <!-- Form for editing profile information -->
-            <label for="profile-picture">Change Profile Picture:</label> <!-- Label for the profile picture input -->
-            <input type="file" id="profile-picture" name="profile-picture"> <!-- Input for uploading a new profile picture -->
+            <label for="profile-picture">Change Profile Picture:</label>
+            <input type="file" id="profile-picture" name="profile-picture">
 
-            <label for="major">Major:</label> <!-- Label for the major input field -->
-            <input type="text" id="major" name="major" > <!-- Input for entering the users major -->
+            <label for="major">Major:</label>
+            <input type="text" id="major" name="major">
 
-            <label for="year">Year:</label> <!-- Label for the year selection -->
-            <select id="year" name="year"> <!-- Dropdown menu for selecting the year -->
+            <label for="year">Year:</label>
+            <select id="year" name="year">
                 <option value="Freshman">Freshman</option>
                 <option value="Sophomore">Sophomore</option>
-                <option value="Junior" >Junior</option> 
+                <option value="Junior">Junior</option>
                 <option value="Senior">Senior</option>
                 <option value="Graduate">Graduate</option>
             </select>
 
-            <label for="campus">Campus:</label> <!-- Label for the campus selection -->
-            <select id="campus" name="campus"> <!-- Dropdown menu for selecting the campus -->
-                <option value="North Campus">East Campus</option>
+            <label for="campus">Campus:</label>
+            <select id="campus" name="campus">
+                <option value="North Campus">North Campus</option>
                 <option value="South Campus">South Campus</option>
                 <option value="Off Campus">Off Campus</option>
             </select>
 
-            <button type="button" onclick="saveProfile()">Save Profile</button> <!-- Button that will save profile changes, triggers the saveProfile() function -->
+            <button type="button" onclick="saveProfile()">Save Profile</button>
         </form>
     </div>
     <footer>
@@ -71,42 +71,5 @@
             <a href="https://www.reddit.com" target="_blank"><img src="img/reddit.png" alt="Reddit"></a>
         </div>
     </footer>
-    
-    <script>
-
-    //JS Scripts
-        // This function saves the profile changes
-        function saveProfile() 
-        {
-            
-            const profilePictureInput = document.getElementById('profile-picture'); // Get profile picture input element and file
-            const profilePictureFile = profilePictureInput.files[0];
-            const major = document.getElementById('major').value;  // Get values of major, year, and campus from the form
-            const year = document.getElementById('year').value;
-            const campus = document.getElementById('campus').value;
-
-            if (profilePictureFile) 
-            {
-                
-                const reader = new FileReader(); // If a new profile picture is uploaded, read it as a data URL
-                reader.onloadend = function() {
-                    //Function save's profile picture, major, year, and campus to the localStorage
-                    localStorage.setItem('profilePicture', reader.result);
-                    localStorage.setItem('major', major);
-                    localStorage.setItem('year', year);
-                    localStorage.setItem('campus', campus);
-                    window.location.href = 'profile.html';
-                }
-                reader.readAsDataURL(profilePictureFile);
-            } else 
-            {
-                // If no new profile picture, just save major, year, and campus to localStorage
-                localStorage.setItem('major', major);
-                localStorage.setItem('year', year);
-                localStorage.setItem('campus', campus);
-                window.location.href = 'profile.html'; // This will take user to profile after saving
-            }
-        }
-    </script>
 </body>
 </html>

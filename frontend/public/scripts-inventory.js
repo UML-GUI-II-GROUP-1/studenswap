@@ -1,19 +1,39 @@
-document.addEventListener('DOMContentLoaded', function() {
+import { getFirestore, collection, getDocs } from "firebase/firestore";
+import { ref, getDownloadURL } from "firebase/storage";
+import { db, storage } from "./firebase-init.js";
+
+document.addEventListener('DOMContentLoaded', async function() {
     const searchInput = document.getElementById('search');
     const listingsContainer = document.getElementById('item-list');
     const minPriceInput = document.getElementById('min-price');
     const maxPriceInput = document.getElementById('max-price');
     const conditionCheckboxes = document.querySelectorAll('input[type="checkbox"]');
     const applyFiltersButton = document.querySelector('.applyfilters');
+    const categoryButtons = document.querySelectorAll('.category-btn');
 
-    // Load items from local storage
-    let items = JSON.parse(localStorage.getItem('inventory')) || [];
-    displayItems(items);
+    let items = [];
 
-    // Apply filters only when the button is clicked
-    applyFiltersButton.addEventListener('click', function() {
-        applyFilters();
-    });
+    async function fetchItems() {
+        const querySnapshot = await getDocs(collection(db, "items"));
+        querySnapshot.forEach(async (doc) => {
+            const itemData = doc.data();
+            const imageRef = ref(storage, itemData.imagePath);
+            const imageURL = await getDownloadURL(imageRef);
+
+            items.push({
+                ...itemData,
+                imageURL
+            });
+        });
+
+        displayItems(items);
+    }
+
+    searchInput.addEventListener('input', applyFilters);
+    applyFiltersButton.addEventListener('click', applyFilters);
+    categoryButtons.forEach(button => button.addEventListener('click', function() {
+        filterByCategory(button.getAttribute('data-category'));
+    }));
 
     function applyFilters() {
         const searchTerm = searchInput.value.toLowerCase();
@@ -35,12 +55,17 @@ document.addEventListener('DOMContentLoaded', function() {
         displayItems(filteredItems);
     }
 
+    function filterByCategory(category) {
+        const filteredItems = category === 'all' ? items : items.filter(item => item.category === category);
+        displayItems(filteredItems);
+    }
+
     function displayItems(items) {
         listingsContainer.innerHTML = '';
 
         items.forEach(item => {
             const itemElement = document.createElement('a');
-            itemElement.href = 'listing.html';
+            itemElement.href = 'listing.html?id=' + item.id;
             itemElement.classList.add('listing-item');
             itemElement.dataset.name = item.itemName;
             itemElement.dataset.condition = item.condition;
@@ -57,4 +82,6 @@ document.addEventListener('DOMContentLoaded', function() {
             listingsContainer.appendChild(itemElement);
         });
     }
+
+    fetchItems();
 });

@@ -17,16 +17,23 @@ header {
     z-index: 2;
 }
 
+header nav {
+    display: flex;
+    justify-content: center; /* Center the navigation items */
+}
+
 header nav ul {
     list-style: none;
     padding: 0;
     margin: 0;
     display: flex;
-    justify-content: center;
+    justify-content: center; /* Center the list items */
+    align-items: center;
 }
 
 header nav ul li {
     margin: 0 15px;
+    position: relative; /* Needed for dropdown positioning */
 }
 
 header nav ul li a {
@@ -40,6 +47,7 @@ header nav ul li a:hover {
     text-decoration: underline;
     background-color: blue;
 }
+
 .dropdown-content {
     display: none;
     position: absolute;
@@ -57,13 +65,15 @@ header nav ul li a:hover {
     text-align: left;
 }
 
-.dropdown-content a:hover {background-color: #ddd;}
+.dropdown-content a:hover {
+    background-color: #ddd;
+}
 
 .dropdown:hover .dropdown-content {
     display: block;
 }
+
 .profile {
-    margin-left: auto;
     display: flex;
     flex-direction: column;
     align-items: center;

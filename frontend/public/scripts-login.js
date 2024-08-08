@@ -1,3 +1,6 @@
+import { auth } from '../src/firebase-init';
+import { signInWithEmailAndPassword, sendPasswordResetEmail } from 'firebase/auth';
+
 document.addEventListener('DOMContentLoaded', function() {
     const loginForm = document.getElementById('loginForm');
     const forgotPasswordLink = document.getElementById('forgotPasswordLink');
@@ -5,7 +8,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const resetPasswordForm = document.getElementById('resetPasswordForm');
     const backToLoginLink = document.getElementById('backToLoginLink');
     const loginContainer = document.getElementById('loginContainer');
-    const umlEmailButton = document.getElementById('umlEmailButton');  // Get the UML button by its ID
+    const umlEmailButton = document.getElementById('umlEmailButton');
 
     forgotPasswordLink.addEventListener('click', function(event) {
         event.preventDefault();
@@ -23,21 +26,14 @@ document.addEventListener('DOMContentLoaded', function() {
         event.preventDefault();
         const email = document.getElementById('resetEmail').value;
         if (validateEmail(email)) {
-            fetch('/forgot-password', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ email })
-            })
-            .then(response => response.json())
-            .then(data => {
-                alert(data.message);
-            })
-            .catch(error => {
-                console.error('Error:', error);
-                alert('An error occurred. Please try again later.');
-            });
+            sendPasswordResetEmail(auth, email)
+                .then(() => {
+                    alert('Password reset email sent!');
+                })
+                .catch(error => {
+                    console.error('Error sending reset email:', error);
+                    alert('An error occurred. Please try again later.');
+                });
         } else {
             alert('Please enter a valid email (ending with student.uml.edu).');
         }
@@ -48,25 +44,15 @@ document.addEventListener('DOMContentLoaded', function() {
         const email = document.getElementById('email').value;
         const password = document.getElementById('password').value;
         if (validateEmail(email) && validatePassword(password)) {
-            fetch('/api/users/login', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ email, password })
-            })
-            .then(response => response.json())
-            .then(data => {
-                if (data.message === 'Login successful') {
+            signInWithEmailAndPassword(auth, email, password)
+                .then(userCredential => {
+                    alert('Login successful!');
                     window.location.href = 'index.html';
-                } else {
-                    alert(data.message);
-                }
-            })
-            .catch(error => {
-                console.error('Error:', error);
-                alert('An error occurred. Please try again later.');
-            });
+                })
+                .catch(error => {
+                    console.error('Error logging in:', error);
+                    alert('An error occurred. Please try again later.');
+                });
         } else {
             alert('Please enter a valid email (ending with student.uml.edu) and a password that meets the required criteria.');
         }

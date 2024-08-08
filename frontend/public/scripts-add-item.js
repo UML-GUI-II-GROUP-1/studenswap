@@ -1,51 +1,50 @@
-document.addEventListener('DOMContentLoaded', function() {
-    const addItemForm = document.getElementById('addItemForm');
+import { getFirestore, collection, addDoc } from "firebase/firestore";
+import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
+import { db, storage } from "./firebase-init.js";
 
-    addItemForm.addEventListener('submit', function(event) {
-        event.preventDefault();
+document.getElementById('add-item-form').addEventListener('submit', async (event) => {
+    event.preventDefault();
 
-        const category = document.getElementById('category').value;
-        const itemName = document.getElementById('itemName').value;
-        const description = document.getElementById('description').value;
-        const price = document.getElementById('price').value;
-        const quantity = document.getElementById('quantity').value;
-        const image = document.getElementById('image').files[0];
+    const itemName = document.getElementById('item-name').value;
+    const price = document.getElementById('item-price').value;
+    const condition = document.getElementById('item-condition').value;
+    const description = document.getElementById('item-description').value;
+    const imageFile = document.getElementById('item-image').files[0];
+    const category = document.getElementById('item-category').value;
 
-        // Perform form validation (if necessary)
-        if (!category || !itemName || !description || !price || !quantity || !image) {
-            alert('Please fill out all fields.');
-            return;
+    const imageRef = ref(storage, `items/${imageFile.name}`);
+    const uploadTask = uploadBytesResumable(imageRef, imageFile);
+
+    uploadTask.on('state_changed', 
+        (snapshot) => {
+            // Handle progress
+        }, 
+        (error) => {
+            console.error('Error uploading file:', error);
+        }, 
+        async () => {
+            const imagePath = `items/${imageFile.name}`;
+            const imageURL = await getDownloadURL(uploadTask.snapshot.ref);
+
+            const newItem = {
+                itemName,
+                price: parseFloat(price),
+                condition,
+                description,
+                imagePath,
+                imageURL,
+                category,
+                sellerName: "John Doe", // Replace with dynamic seller info
+                sellerEmail: "johndoe@student.uml.edu" // Replace with dynamic seller info
+            };
+
+            try {
+                await addDoc(collection(db, "items"), newItem);
+                alert('Item added successfully!');
+                window.location.href = "inventory.html";
+            } catch (e) {
+                console.error('Error adding document: ', e);
+            }
         }
-
-        // Create an item object
-        const item = {
-            category,
-            itemName,
-            description,
-            price,
-            quantity,
-            imageURL: URL.createObjectURL(image)
-        };
-
-        // Add the new item to the inventory
-        addToInventory(item);
-
-        // Reset the form
-        addItemForm.reset();
-
-        alert('Item added successfully!');
-        // Redirect to the inventory page
-        window.location.href = 'inventory.html';
-    });
-
-    function addToInventory(item) {
-        // Retrieve the current inventory from local storage or initialize an empty array
-        const inventory = JSON.parse(localStorage.getItem('inventory')) || [];
-
-        // Add the new item to the inventory
-        inventory.push(item);
-
-        // Save the updated inventory back to local storage
-        localStorage.setItem('inventory', JSON.stringify(inventory));
-    }
+    );
 });

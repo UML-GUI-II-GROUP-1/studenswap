@@ -1,3 +1,6 @@
+import { auth } from '../src/firebase-init';
+import { createUserWithEmailAndPassword, sendEmailVerification } from 'firebase/auth';
+
 document.addEventListener('DOMContentLoaded', function() {
     const signupForm = document.getElementById('signupForm');
 
@@ -25,24 +28,16 @@ document.addEventListener('DOMContentLoaded', function() {
             return;
         }
 
-        fetch('/api/auth/signup', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ name: firstName + ' ' + lastName, email, password })
-        })
-        .then(response => response.json())
-        .then(data => {
-            alert(data.msg);
-            if (data.msg === 'Registration successful. Please verify your email.') {
+        createUserWithEmailAndPassword(auth, email, password)
+            .then(userCredential => {
+                alert('Registration successful. Please verify your email.');
+                sendEmailVerification(userCredential.user);
                 window.location.href = 'login.html';
-            }
-        })
-        .catch(error => {
-            console.error('Error:', error);
-            alert('An error occurred. Please try again later.');
-        });
+            })
+            .catch(error => {
+                console.error('Error signing up:', error);
+                alert('An error occurred. Please try again later.');
+            });
     });
 
     function validateEmail(email) {

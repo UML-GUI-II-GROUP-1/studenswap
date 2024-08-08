@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Item Listings</title>
     <link rel="stylesheet" href="inventorystyles.css">
+    <script type="module" src="firebase-init.js"></script>
+    <script type="module" src="scripts-inventory.js"></script>
 </head>
 <body>
     <header>
@@ -85,7 +87,7 @@
                             <button class="btn category-btn" data-category="entertainment">Entertainment</button>
                         </div>
                     </div>
-                    <button class="applyfilters" onclick="applyFilters()">Apply Filters</button>
+                    <button class="applyfilters">Apply Filters</button>
                 </div>
             </div>
         </aside>
@@ -93,126 +95,9 @@
         <main class="main-content">
             <h1>Item Listings</h1>
             <div class="listings" id="item-list">
-                <a href="listing.html" class="listing-item" data-name="Desk" data-condition="new" data-price="20">
-                    <div class="listing-image" style="background-image: url('img/desk.jpg');"></div>
-                    <div class="listing-info">
-                        <h2>Desk</h2>
-                        <p>$20</p>
-                    </div>
-                </a>
-                <a href="listing2.html" class="listing-item" data-name="Sofa" data-condition="used-good" data-price="200">
-                    <div class="listing-image" style="background-image: url('img/sofa.jpg');"></div>
-                    <div class="listing-info">
-                        <h2>Sofa</h2>
-                        <p>$200</p>
-                    </div>
-                </a>
-                <a href="listing3.html" class="listing-item" data-name="Monitor" data-condition="used-like new" data-price="50">
-                    <div class="listing-image" style="background-image: url('img/monitor.jpg');"></div>
-                    <div class="listing-info">
-                        <h2>Monitor</h2>
-                        <p>$50</p>
-                    </div>
-                </a>
-                <a href="listing4.html" class="listing-item" data-name="TV" data-condition="used-fair" data-price="200">
-                    <div class="listing-image" style="background-image: url('img/tv.jpg');"></div>
-                    <div class="listing-info">
-                        <h2>TV</h2>
-                        <p>$200</p>
-                    </div>
-                </a>
+                <!-- Item listings will be inserted here by JavaScript -->
             </div>
         </main>
     </div>
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const searchInput = document.getElementById('search');
-            const listingsContainer = document.getElementById('item-list');
-            const minPriceInput = document.getElementById('min-price');
-            const maxPriceInput = document.getElementById('max-price');
-            const conditionCheckboxes = document.querySelectorAll('input[type="checkbox"]');
-            const applyFiltersButton = document.querySelector('.applyfilters');
-
-            let items = JSON.parse(localStorage.getItem('inventory')) || [];
-            
-            const defaultItems = [
-                {
-                    itemName: 'Desk',
-                    condition: 'new',
-                    price: 20,
-                    imageURL: 'img/desk.jpg'
-                },
-                {
-                    itemName: 'Sofa',
-                    condition: 'used-good',
-                    price: 200,
-                    imageURL: 'img/sofa.jpg'
-                },
-                {
-                    itemName: 'Monitor',
-                    condition: 'used-like new',
-                    price: 50,
-                    imageURL: 'img/monitor.jpg'
-                },
-                {
-                    itemName: 'TV',
-                    condition: 'used-fair',
-                    price: 100,
-                    imageURL: 'img/tv.jpg'
-                }
-            ];
-
-            items = [...defaultItems, ...items];
-
-            displayItems(items);
-
-            applyFiltersButton.addEventListener('click', function() {
-                applyFilters();
-            });
-
-            function applyFilters() {
-                const searchTerm = searchInput.value.toLowerCase();
-                const minPrice = minPriceInput.value ? parseFloat(minPriceInput.value) : 0;
-                const maxPrice = maxPriceInput.value ? parseFloat(maxPriceInput.value) : Infinity;
-
-                const selectedConditions = Array.from(conditionCheckboxes)
-                    .filter(checkbox => checkbox.checked)
-                    .map(checkbox => checkbox.value);
-
-                const filteredItems = items.filter(item => {
-                    const matchesSearch = item.itemName.toLowerCase().includes(searchTerm);
-                    const matchesPrice = item.price >= minPrice && item.price <= maxPrice;
-                    const matchesCondition = selectedConditions.length === 0 || selectedConditions.includes(item.condition);
-
-                    return matchesSearch && matchesPrice && matchesCondition;
-                });
-
-                displayItems(filteredItems);
-            }
-
-            function displayItems(items) {
-                listingsContainer.innerHTML = '';
-
-                items.forEach(item => {
-                    const itemElement = document.createElement('a');
-                    itemElement.href = 'listing.html';
-                    itemElement.classList.add('listing-item');
-                    itemElement.dataset.name = item.itemName;
-                    itemElement.dataset.condition = item.condition;
-                    itemElement.dataset.price = item.price;
-
-                    itemElement.innerHTML = `
-                        <div class="listing-image" style="background-image: url('${item.imageURL}');"></div>
-                        <div class="listing-info">
-                            <h2>${item.itemName}</h2>
-                            <p>$${item.price}</p>
-                        </div>
-                    `;
-
-                    listingsContainer.appendChild(itemElement);
-                });
-            }
-        });
-    </script>
 </body>
 </html>
