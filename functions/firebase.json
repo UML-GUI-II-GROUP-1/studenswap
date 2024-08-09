@@ -1,20 +1,36 @@
 {
-    "functions": {
-      "source": "."
+  "functions": [
+    {
+      "source": ".",
+      "codebase": "default"
     },
-    "hosting": {
-      "public": "build",
+    {
+      "source": "studentswap",
+      "codebase": "studentswap",
       "ignore": [
-        "firebase.json",
-        "**/.*",
-        "**/node_modules/**"
+        "node_modules",
+        ".git",
+        "firebase-debug.log",
+        "firebase-debug.*.log",
+        "*.local"
       ],
-      "rewrites": [
-        {
-          "source": "/api/**",
-          "function": "api"
-        }
+      "predeploy": [
+        "npm --prefix \"$RESOURCE_DIR\" run lint"
       ]
     }
+  ],
+  "hosting": {
+    "public": "build",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "rewrites": [
+      {
+        "source": "/api/**",
+        "function": "api"
+      }
+    ]
   }
-  
+}
