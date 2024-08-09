@@ -1,23 +1,28 @@
 {
-    "name": "functions",
-    "description": "Cloud Functions for Firebase",
-    "scripts": {
+  "name": "functions",
+  "description": "Cloud Functions for Firebase",
+  "scripts": {
       "serve": "firebase emulators:start --only functions",
       "shell": "firebase functions:shell",
       "start": "npm run shell",
       "deploy": "firebase deploy --only functions",
       "logs": "firebase functions:log",
       "lint": "eslint ."
-    },
-    "dependencies": {
-      "firebase-admin": "^10.0.2",
-      "firebase-functions": "^4.3.0",
+  },
+  "dependencies": {
+      "cors": "^2.8.5",
       "express": "^4.17.3",
-      "cors": "^2.8.5"
-    },
-    "engines": {
+      "firebase-admin": "^10.0.2",
+      "firebase-functions": "^4.3.0"
+  },
+  "engines": {
       "node": "18"
-    },
-    "private": true
+  },
+  "private": true,
+  "devDependencies": {
+      "@eslint/js": "^9.8.0",
+      "eslint": "^9.8.0",
+      "eslint-plugin-react": "^7.35.0",
+      "globals": "^15.9.0"
   }
-  
+}
