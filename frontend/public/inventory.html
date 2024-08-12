@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Item Listings</title>
+    <link rel="stylesheet" href="inventorystyles.css">
+    <script type="module" src="firebase-init.js"></script>
+    <script type="module" src="scripts-inventory.js"></script>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="inventory.html">Inventory</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+                <li class="dropdown">
+                    <a href="javascript:void(0)" class="dropbtn">MYUML</a>
+                    <div class="dropdown-content">
+                        <a href="https://sis.uml.edu" target="_blank">Student SIS</a>
+                        <a href="https://www.uml.edu/myuml" target="_blank">MyUML Page</a>
+                        <a href="https://uml.umassonline.net/webapps/login/" target="_blank">Blackboard</a>
+                        <a href="https://www.uml.edu" target="_blank">UML Homepage</a>
+                        <a href="https://www.uml.edu/maps/transit" target="_blank"> UML Transit</a>
+                        <a href="https://www.uml.edu/student-services/reslife/residence-halls/" target="_blank">UML Dorms</a>
+                    </div>
+                </li>
+                <li class="profile">
+                    <a href="profile.html" id="userProfileLink">
+                        <img src="img/animal.png" alt="Profile Picture" class="profile-img">
+                        <span id="profileName"></span>
+                    </a>
+                </li>             
+                <li><a href="#" id="sign-out-button">Sign Out</a></li>
+ 
+            </ul>
+        </nav>
+    </header>
+
+    <div class="container">
+        <aside class="sidebar">
+            <div class="search-bar">
+                <h2>Search Results</h2>
+                <div class="form-group">
+                    <label for="search">Search</label>
+                    <input type="text" id="search" placeholder="Search...">
+                </div>
+                <div class="newlisting">
+                    <a href="add-item.html" class="newlisting" data-category="all">Create New Listing</a>
+                </div>
+                <div class="scrollable-content">
+                    <div class="form-group">
+                        <div class="minmax">
+                            <label for="min-price">Min Price</label>
+                            <input type="number" id="min-price" placeholder="Min">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="minmax">
+                            <label for="max-price">Max Price</label>
+                            <input type="number" id="max-price" placeholder="Max">
+                        </div>
+                    </div>
+
+                    <div id="list1" class="dropdown-check-list" tabindex="100">
+                        <span class="anchor">Condition</span>
+                        <ul class="items">
+                            <li><input type="checkbox" value="new">New</li>
+                            <li><input type="checkbox" value="used-like new">Used - Like New</li>
+                            <li><input type="checkbox" value="used-good">Used - Good</li>
+                            <li><input type="checkbox" value="used-fair">Used - Fair</li>
+                        </ul>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Categories</label>
+                        <div class="categories-buttons">
+                            <button class="btn category-btn" data-category="all">All</button>
+                            <button class="btn category-btn" data-category="vehicles">Vehicles</button>
+                            <button class="btn category-btn" data-category="property">Property Rentals</button>
+                            <button class="btn category-btn" data-category="apparel">Apparel</button>
+                            <button class="btn category-btn" data-category="classifieds">Classifieds</button>
+                            <button class="btn category-btn" data-category="electronics">Electronics</button>
+                            <button class="btn category-btn" data-category="entertainment">Entertainment</button>
+                        </div>
+                    </div>
+                    <button class="applyfilters">Apply Filters</button>
+                </div>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <h1>Item Listings</h1>
+            <div class="listings" id="item-list">
+            </div>
+        </main>
+    </div>
+</body>
+</html>

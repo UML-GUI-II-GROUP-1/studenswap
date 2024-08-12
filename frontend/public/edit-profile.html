@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Profile</title>
+    <link rel="stylesheet" href="edit-profile.css">
+    <script type="module" src="firebase-init.js"></script>
+    <script type="module" src="edit-profile.js"></script>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="inventory.html">Inventory</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+                <li class="dropdown">
+                    <a href="javascript:void(0)" class="dropbtn">MYUML</a>
+                    <div class="dropdown-content">
+                        <a href="https://sis.uml.edu" target="_blank">Student SIS</a>
+                        <a href="https://www.uml.edu/myuml" target="_blank">MyUML Page</a>
+                        <a href="https://uml.umassonline.net/webapps/login/" target="_blank">Blackboard</a>
+                        <a href="https://www.uml.edu" target="_blank">UML Homepage</a>
+                        <a href="https://www.uml.edu/maps/transit" target="_blank"> UML Transit</a>
+                        <a href="https://www.uml.edu/student-services/reslife/residence-halls/" target="_blank">UML Dorms</a>
+                    </div>
+                </li>
+                <li><a href="signup.html">Sign Up</a></li>
+                <li><a href="login.html">Login</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="edit-profile-container">
+        <h1>Edit Profile</h1>
+        <form id="edit-profile-form">
+            <label for="profile-picture">Change Profile Picture:</label>
+            <input type="file" id="profile-picture" name="profile-picture">
+
+            <label for="major">Major:</label>
+            <input type="text" id="major" name="major">
+
+            <label for="year">Year:</label>
+            <select id="year" name="year">
+                <option value="Freshman">Freshman</option>
+                <option value="Sophomore">Sophomore</option>
+                <option value="Junior">Junior</option>
+                <option value="Senior">Senior</option>
+                <option value="Graduate">Graduate</option>
+            </select>
+
+            <label for="campus">Campus:</label>
+            <select id="campus" name="campus">
+                <option value="North Campus">North Campus</option>
+                <option value="South Campus">South Campus</option>
+                <option value="Off Campus">Off Campus</option>
+            </select>
+
+            <button type="button" onclick="saveProfile()">Save Profile</button>
+        </form>
+    </div>
+    <footer>
+        <p>&copy; 2024 StudentSwap. All rights reserved.</p> 
+        <div class="social-links">
+            <a href="https://www.facebook.com" target="_blank"><img src="img/facebook.png" alt="Facebook"></a>
+            <a href="https://www.twitter.com" target="_blank"><img src="img/twitter.png" alt="Twitter"></a>
+            <a href="https://www.instagram.com" target="_blank"><img src="img/instagram.png" alt="Instagram"></a>
+            <a href="https://www.tiktok.com" target="_blank"><img src="img/tiktok.png" alt="TikTok"></a>
+            <a href="https://www.youtube.com" target="_blank"><img src="img/youtube.png" alt="YouTube"></a>
+            <a href="https://www.reddit.com" target="_blank"><img src="img/reddit.png" alt="Reddit"></a>
+        </div>
+    </footer>
+</body>
+</html>

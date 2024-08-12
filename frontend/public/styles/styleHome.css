@@ -1,0 +1,181 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: #f9f9f9;
+    opacity: 0;
+    animation: fadeIn 1s forwards;
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+    }
+}
+
+header {
+    width: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    padding: 15px 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+header nav {
+    width: 100%;
+}
+
+header nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center; /* Center the items */
+    align-items: center;
+}
+
+header nav ul li {
+    margin: 0 15px;
+    position: relative; /* Needed for dropdown positioning */
+}
+
+header nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+header nav ul li a:hover {
+    color: blue;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 3;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+}
+
+.dropdown-content a:hover {
+    background-color: #ddd;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+main {
+    flex: 1; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+    background-color: #f9f9f9;
+    color: #000;
+    position: relative;
+    margin-top: 60px;
+    margin-bottom: 60px; 
+}
+
+h2 {
+    font-size: 48px;
+    font-weight: bold;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+    transform-style: preserve-3d;
+    animation: rotate 5s infinite linear, colorChange 10s infinite linear;
+}
+
+@keyframes rotate {
+    from {
+        transform: rotateY(0deg) rotateX(0deg);
+    }
+    to {
+        transform: rotateY(360deg) rotateX(360deg);
+    }
+}
+
+@keyframes colorChange {
+    0% { color: #ff6347; }
+    25% { color: #1e90ff; }
+    50% { color: #32cd32; }
+    75% { color: #ff4500; }
+    100% { color: #ff6347; }
+}
+
+p {
+    color: #000000;
+}
+
+.main-image img {
+    width: 400px;
+    height: auto;
+    border: 5px solid #0067B1;
+}
+
+.profile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.profile-img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+.profile-name {
+    margin-top: 5px;
+    font-size: 14px;
+    color: white;
+}
+
+footer {
+    width: 100%;
+    text-align: center;
+    color: #ccc;
+    background-color: rgba(0, 0, 0, 0.8);
+    padding: 10px 0;
+    position: relative;
+    bottom: 0;
+}
+
+.social-links {
+    margin-top: 10px;
+}
+
+.social-links a {
+    margin: 0 10px;
+    display: inline-block;
+    transition: transform 0.3s ease;
+}
+
+social-links img {
+    width: 30px;
+    height: 30px;
+}
+
+.social-links a:hover {
+    transform: scale(1.1);
+}

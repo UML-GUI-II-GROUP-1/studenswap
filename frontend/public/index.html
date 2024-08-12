@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StudentSwap</title>
+    <link rel="stylesheet" href="styles/styleHome.css">
+    <script type="module" src="firebase-init.js"></script>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="inventory.html" class="nav-link">Inventory</a></li>
+                <li><a href="about.html" class="nav-link">About Us</a></li>
+                <li><a href="contact.html" class="nav-link">Contact Us</a></li>
+                <li class="dropdown">
+                    <a href="javascript:void(0)" class="dropbtn">MYUML</a>
+                    <div class="dropdown-content">
+                        <a href="https://sis.uml.edu" target="_blank">Student SIS</a>
+                        <a href="https://www.uml.edu/myuml" target="_blank">MyUML Page</a>
+                        <a href="https://uml.umassonline.net/webapps/login/" target="_blank">Blackboard</a>
+                        <a href="https://www.uml.edu" target="_blank">UML Homepage</a>
+                        <a href="https://www.uml.edu/maps/transit" target="_blank"> UML Transit</a>
+                        <a href="https://www.uml.edu/student-services/reslife/residence-halls/" target="_blank">UML Dorms</a>
+                    </div>
+                </li>
+                <li class="profile">
+                    <a href="profile.html" id="userProfileLink">
+                        <img src="img/animal.png" alt="Profile Picture" class="profile-img">
+                        <span id="profileName"></span>
+                    </a>
+                </li>                
+
+                <li><a href="#" id="sign-out-button">Sign Out</a></li>
+            </ul>
+        </nav>
+    </header>    
+    <div id="root"></div>
+
+    <main>
+        <h2>Welcome to StudentSwap!</h2>
+        <p>This website is designed for students to buy and sell new/used home goods and furniture. Only students should have access to this website.</p>
+        <div class="main-image">
+            <img src="img/laptop.webp" alt="Trading Image">
+        </div>
+    </main>   
+    <footer>
+        <div class="social-links">
+            <a href="https://www.facebook.com" target="_blank"><img src="img/facebook.png" alt="Facebook"></a>
+            <a href="https://www.twitter.com" target="_blank"><img src="img/twitter.png" alt="Twitter"></a>
+            <a href="https://www.instagram.com" target="_blank"><img src="img/instagram.png" alt="Instagram"></a>
+            <a href="https://www.tiktok.com" target="_blank"><img src="img/tiktok.png" alt="TikTok"></a>
+            <a href="https://www.youtube.com" target="_blank"><img src="img/youtube.png" alt="YouTube"></a>
+            <a href="https://www.reddit.com" target="_blank"><img src="img/reddit.png" alt="Reddit"></a>
+        </div>
+        <p>&copy; 2024 StudentSwap. All rights reserved.</p> 
+    </footer>    
+    <script>
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', function(event) {
+                event.preventDefault();
+                document.body.style.transition = 'opacity 0.5s';
+                document.body.style.opacity = 0;
+                setTimeout(() => {
+                    window.location.href = this.href;
+                }, 500);
+            });
+        });
+    </script>
+</body>
+</html>
