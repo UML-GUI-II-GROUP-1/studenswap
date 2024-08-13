@@ -35,6 +35,14 @@ document.addEventListener('DOMContentLoaded', async function() {
         filterByCategory(button.getAttribute('data-category'));
     }));
 
+    // New event listener to handle Enter key press in the search input
+    searchInput.addEventListener('keypress', function(event) {
+        if (event.key === 'Enter') {
+            event.preventDefault(); // Prevent the default action
+            applyFilters();
+        }
+    });
+
     function applyFilters() {
         const searchTerm = searchInput.value.toLowerCase();
         const minPrice = minPriceInput.value ? parseFloat(minPriceInput.value) : 0;

@@ -122,14 +122,7 @@ main p {
     border: 1px solid #ccc;
     padding: 20px;
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    transform-style: preserve-3d;
-    animation: zoomInOut 5s ease-out forwards;
-}
-
-@keyframes zoomInOut {
-    0% { transform: translateZ(0) scale(1); }
-    50% { transform: translateZ(150px) scale(1.5); }
-    100% { transform: translateZ(0) scale(1); }
+    /* Removed the animation and transform styles */
 }
 
 footer {
@@ -146,18 +139,18 @@ footer {
     margin-top: 10px;
 }
 
-.social-links a {
+social-links a {
     margin: 0 10px;
     display: inline-block;
     transition: transform 0.3s ease;
 }
 
-.social-links img {
+social-links img {
     width: 30px;
     height: 30px;
 }
 
-.social-links a:hover {
+social-links a:hover {
     transform: scale(1.1);
 }
 
